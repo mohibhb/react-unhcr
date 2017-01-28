@@ -17,7 +17,7 @@ class App extends Component {
       <div className="App">
         <div className="app-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to CodeYourFuture</h2>
+          <h2>UNHCR Data Browser</h2>
         </div>
         <div className="app-search-box">
           <div>

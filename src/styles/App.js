@@ -6,6 +6,10 @@ const {width, height, scale} = Dimensions.get("window"),
     vmax = Math.max(vw, vh);
 
 export default StyleSheet.create({
+    "body": {
+        "fontFamily": "Arial",
+        "color": "#403e3e"
+    },
     "App": {
         "textAlign": "center"
     },
@@ -18,8 +22,7 @@ export default StyleSheet.create({
         "paddingTop": 20,
         "paddingRight": 20,
         "paddingBottom": 20,
-        "paddingLeft": 20,
-        "color": "white"
+        "paddingLeft": 20
     },
     "app-main": {
         "minHeight": 400

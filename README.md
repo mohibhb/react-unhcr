@@ -47,7 +47,15 @@ We now hardcode the URL to get Turkey's statistics in 2013. In this step we will
 * You will probably need to keep track of what country is selected by the user (does it go into props or state?) and pass it in the URL.
 * Leave the year hardcoded as 2013 for now.
 
-Task 3 - Write a Test
+Task 3 - Select the Year
+---
+So far we had the Year hardcoded. We want to change that.
+
+UNHCR provides its data for certain years - to get the list of available years, you can use this api - http://data.unhcr.org/wiki/index.php/Get-stats-time-series-years.html.
+
+Make a call to retrieve the list of Years, and display them for the User to select from. And then use the combination of Year/Country to retrieve the country statistics and display them.
+
+Task 4 - Write a Test (Group/Homework)
 ---
 At your CountryDetails, we display the Total number of female and male refugees. Even though the API returns the Total number of refugees, it seems it's calculating it wrongly sometimes, hence we will do the calculation ourself by adding the two values and displaying the total.
 
