@@ -34,7 +34,7 @@ We are also making a call to the demographics API (with hardcoded values to retr
 * Place it under the folder /components
 * Import it into App.js and use it to display the same data
 * Hint: For ideas on how to track the selection of the list, check out [here](http://stackoverflow.com/questions/28868071/onchange-event-using-react-js-for-drop-down)
-* Hint: the countryData would have to be passed to the new Component you create as xxxx
+* Hint: the countryData would have to be passed to the new Component you created
 
 
 Task 2 - Display the details of the selected country
