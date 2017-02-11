@@ -3,15 +3,33 @@ import React, { Component } from 'react';
 import logo from './images/cyf.png';
 import './styles/App.css';
 import CountriesList from './components/CountriesList';
+import CountryDetails from './CountryDetails';
+import YearList from './components/YearList';
 
 class App extends Component {
   constructor(props) {
-    super(props);
-    this.state = {
+      super(props);
+      this.state = {
       countriesList: [],
-      countryData: {}
+      countryData: {},
+      YearList : [],
+      year: null,
+      country: null
+      
     }
+
   }
+   changeCountryList = (event) => {
+         this.setState({country: event.target.value});
+     }
+   changeYearList = (event) => {
+         this.setState({year: event.target.value});
+     }
+     onSubmit = () => {
+      console.log(this.state.country);
+      console.log(this.state.year);
+      this.getCountryStatistics(this.state.country, this.state.year)
+     }
   render() {
     return (
       <div className="App">
@@ -21,30 +39,36 @@ class App extends Component {
         </div>
         <div className="app-search-box">
           <div>
-            <CountriesList countries={this.state.countriesList} />
+            <CountriesList countries={this.state.countriesList}  changeing={this.changeCountryList}/>
           </div>
           <div>
-            <button onClick={()=>alert('Not implemented')} type="submit">Retrieve Country statistics</button>
+            <YearList years={this.state.YearList} changeing={this.changeYearList}/>
+          </div>
+          <div>
+            <button onClick={this.onSubmit} type="submit">Retrieve Country statistics</button>
           </div>
         </div>
-        <div className="app-country-statistics">
-          <strong>Country: </strong>{this.state.countryData.country_of_residence_en}<br/>
-          <strong>Year: </strong>{this.state.countryData.year}<br/>
-          <strong>Female Refugees: </strong>{this.state.countryData.female_total_value}<br/>
-          <strong>Male Refugees: </strong>{this.state.countryData.male_total_value}<br/>
-        </div>
+        <CountryDetails details={this.state.countryData}/>
       </div>
     );
   }
   componentDidMount() {
       this.getCountriesList();
-      this.getCountryStatistics('TUR', '2013');
+      // this.getCountryStatistics('TUR', '2013');
+      this.getYearList();
   }
   getCountriesList() {
     fetch('http://data.unhcr.org/api/stats/country_of_residence.json')
       .then(response => response.json())
       .then(data => {
         this.setState({ countriesList: data } );
+      });
+  }
+   getYearList() {
+    fetch('http://data.unhcr.org/api/stats/time_series_years.json')
+      .then(response => response.json())
+      .then(data => {
+        this.setState({ YearList: data } );
       });
   }
   getCountryStatistics(countryCode, year) {
